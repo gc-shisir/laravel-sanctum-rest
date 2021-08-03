@@ -33,5 +33,5 @@ Route::post('/products',function(){
 });
 
 Route::get('/',function(){
-    return "hello world";
+    return ['method'=>'GET','url'=>'http://localhost:8000/api/products','message'=>'Fetch all products'];
 });
