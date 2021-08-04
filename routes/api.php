@@ -20,12 +20,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('products','ProductController');
+// Route::resource('products','ProductController');
+
+// Public routes
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/products/{id}',[ProductController::class,'show']);
 Route::get('products/search/{name}',[ProductController::class,'search']);
 
-// Route::get('/products',[ProductController::class,'index']);
+// Protected routes
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/products',[ProductController::class,'store']);
+    Route::put('/products/{id}',[ProductController::class,'update']);
+    Route::delete('/products/{id}',[ProductController::class,'destroy']);
+});
 
-// Route::post('/products',[ProductController::class,'store']);
+
+
+
 
 Route::get('/',function(){
     return ['method'=>'GET','url'=>'http://localhost:8000/api/products','message'=>'Fetch all products'];
