@@ -25,7 +25,7 @@ This is an example of a REST API using auth tokens with Laravel Sanctum
 
 ## Routes
 
-### Public
+- Public
 
     ```
     GET   /api/products
@@ -43,11 +43,11 @@ This is an example of a REST API using auth tokens with Laravel Sanctum
     @desc: User registration
     ```
 
-### Protected
+- Protected
   ``` 
   POST   /api/products
   @body: name, slug, description, price
-  @desc: Add product
+  @desc: Add a product
 
   PUT   /api/products/:id
   @body: ?name, ?slug, ?description, ?price
